@@ -39,8 +39,17 @@ cells:
     metadata: {}
   - kind: 2
     languageId: sql
-    value: INSERT INTO employee(name, department_id) VALUES('drake',
-      'acb0c3d9-97d9-4878-9659-5f81b9f3d32e')
+    value: "INSERT INTO employee(name, department_id) VALUES('drake',
+      '1f516d1e-bde8-406b-b83c-b88aacf94ef3');\r
+
+      INSERT INTO employee(name, department_id) VALUES('john',
+      '1f516d1e-bde8-406b-b83c-b88aacf94ef3');\r
+
+      INSERT INTO employee(name, department_id) VALUES('jake',
+      'b373bfef-872d-4055-8afe-4385f81c8da9');\r
+
+      INSERT INTO employee(name, department_id) VALUES('rissa',
+      '26f6a49d-c4b2-418b-aa9b-bd9731b8aeed');"
     metadata: {}
   - kind: 2
     languageId: sql
@@ -53,14 +62,45 @@ cells:
     metadata: {}
   - kind: 2
     languageId: sql
-    value: SELECT * FROM employee INNER JOIN department ON employee.department_id =
-      department.id WHERE employee.id = 'bb004caa-eb15-4f16-869f-f572b178df01';
+    value: "SELECT employee.id AS id, \r
+
+      \  employee.name AS name, \r
+
+      \  employee.created_at, \r
+
+      \  employee.updated_at, \r
+
+      \  department.id AS department_id, \r
+
+      \  department.name AS department_name\r
+
+      FROM employee \r
+
+      INNER JOIN department ON employee.department_id = department.id \r
+
+      WHERE employee.id = '1082cae2-51c4-44ea-8024-f79b55bb5c98';"
     metadata: {}
   - kind: 2
     languageId: sql
     value: "DROP TABLE IF EXISTS department;\r
 
       DROP TABLE IF EXISTS employee;"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: DELETE FROM employee WHERE id = 'bcf18043-f1b0-4de0-9181-50b956138bd3';
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "UPDATE employee\r
+
+      SET name = 'Michael',\r
+
+      updated_at = now(),\r
+
+      department_id = 'a49c1332-b7dc-4d39-940b-40d8d21e9ef9'\r
+
+      WHERE id = '1082cae2-51c4-44ea-8024-f79b55bb5c98';"
     metadata: {}
 metadata:
   conn:
