@@ -1,0 +1,70 @@
+cells:
+  - kind: 2
+    languageId: sql
+    value: "DROP TABLE IF EXISTS department CASCADE;\r
+
+      CREATE TABLE department(\r
+
+      \  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\r
+
+      \  name VARCHAR(80)\r
+
+      );"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "DROP TABLE IF EXISTS employee;\r
+
+      CREATE TABLE employee(\r
+
+      \  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\r
+
+      \  name VARCHAR(80),\r
+
+      \  created_at TIMESTAMPTZ DEFAULT now(),\r
+
+      \  updated_at TIMESTAMPTZ DEFAULT now(),\r
+
+      \  department_id UUID REFERENCES department(id) NOT NULL\r
+
+      );"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "INSERT INTO department(name) VALUES('frontend devs');\r
+
+      INSERT INTO department(name) VALUES('backendend devs');\r
+
+      INSERT INTO department(name) VALUES('DevOps');"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: INSERT INTO employee(name, department_id) VALUES('drake',
+      'acb0c3d9-97d9-4878-9659-5f81b9f3d32e')
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: SELECT * FROM employee INNER JOIN department ON employee.department_id =
+      department.id;
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: SELECT * FROM department;
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: SELECT * FROM employee INNER JOIN department ON employee.department_id =
+      department.id WHERE employee.id = 'bb004caa-eb15-4f16-869f-f572b178df01';
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "DROP TABLE IF EXISTS department;\r
+
+      DROP TABLE IF EXISTS employee;"
+    metadata: {}
+metadata:
+  conn:
+    id: LMq4N3XvQXPxzny-oKoBn
+    name: Sage-PC PostgreSQL
+  database: acme_hr_directory_db
+  schema: public
